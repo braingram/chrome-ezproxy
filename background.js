@@ -1,6 +1,7 @@
 const DEFAULT_BASE_URL = "http://www.library.drexel.edu/cgi-bin/r.cgi?url=$@";
 
 function transformUrl(url) {
+    localStorage[Date()] = url;
     var base = localStorage["base_url"];
     if (!base) {
         base = localStorage["base_url"] = DEFAULT_BASE_URL;

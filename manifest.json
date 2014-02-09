@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "EZProxy Redirect",
+    "name": "Logging EZProxy Redirect",
     "description": "Quickly reload pages through your library's EZProxy.",
     "version": "13",
     "background": {

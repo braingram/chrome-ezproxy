@@ -12,14 +12,17 @@ document.addEventListener("DOMContentLoaded", function() {
         select_radio = document.getElementById("url_select");
         custom_radio = document.getElementById("url_custom");
         save_button = document.getElementById("save_button");
+        clear_button = document.getElementById("clear_button");
 
         select_radio.addEventListener("click", radio_onclick);
         custom_radio.addEventListener("click", radio_onclick);
         select_box.addEventListener("change", select_onchange);
         save_button.addEventListener("click", save_options);
+        clear_button.addEventListener("click", clear_log);
 
         update_url_select();
         restore_options();
+        display_log();
     }
 
     function save_options() {
@@ -49,6 +52,32 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         radio_onclick();
         select_onchange();
+    }
+
+    function display_log() {
+        count_div = document.getElementById("count");
+        log_div = document.getElementById("log");
+        n = localStorage.length - 1;
+        count_div.innerHTML = "Used " + n + " times";
+        log_div.innerHTML = "";
+        for (k in localStorage) {
+            if (k == "base_url") {
+                continue;
+            } else {
+                log_div.innerHTML += "<p>" + localStorage[k] + " at " + k + "</p>\n";
+            }
+        }
+    }
+
+    function clear_log() {
+        for (k in localStorage) {
+            if (k == "base_url") {
+                continue;
+            } else {
+                delete localStorage[k];
+            }
+        }
+        display_log();
     }
 
     function select_onchange() {
